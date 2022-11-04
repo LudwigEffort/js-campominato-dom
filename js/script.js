@@ -26,18 +26,25 @@ elePlayButton.addEventListener('click', function(){
 
     const arrBombNumbers = [1, 5, 10, 15, 20];
 
+    const arrBomRandomsNumbers = [];
+
     for (let i = 1; i <= nCell; i++) {
-        
+
+        let randomNumber;
+        do {
+            randomNumber = getRandomInteger(i, nCell);
+        }
+        while (arrBomRandomsNumbers.includes(randomNumber))
+        arrBomRandomsNumbers.push(randomNumber);
+
         const eleCell = document.createElement('div');
         eleCell.classList.add('cell');
         eleCell.innerHTML = i;
         eleGrid.append(eleCell);
 
-
-
-        if (arrBombNumbers.includes(i)) {
-            eleCell.classList.add('bomb');
-        }
+        // if (arrBombNumbers.includes(i)) {
+        //     eleCell.classList.add('bomb');
+        // }
 
         eleCell.addEventListener('click', function () {
 
@@ -47,7 +54,12 @@ elePlayButton.addEventListener('click', function(){
 
             if (arrBombNumbers.includes(i)) {
                 //console.log('Yes');;
-                eleCell.classList.add('test');
+                //eleCell.classList.add('test');
+
+                // for (let j = arrBombNumbers.length - 1; j = 0; j--) {
+                //     //eleCell.classList.add('test');
+                //     eleCell.classList.add('bomb');
+                // }
 
                 eleBanner.classList.add('show');
             }
@@ -58,6 +70,8 @@ elePlayButton.addEventListener('click', function(){
         });
 
     }
+
+    console.log(arrBomRandomsNumbers);
 });
 
 eleGuideButton.addEventListener('click', function () {
@@ -78,3 +92,6 @@ eleGuideButton.addEventListener('click', function () {
 
 });
 
+function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (min - max +1 )) + min;
+}
