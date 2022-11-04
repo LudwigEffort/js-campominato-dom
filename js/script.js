@@ -37,6 +37,8 @@ elePlayButton.addEventListener('click', function(){
         while (arrBomRandomsNumbers.includes(randomNumber))
         arrBomRandomsNumbers.push(randomNumber);
 
+        //add for to generate 16 random numbers
+
         const eleCell = document.createElement('div');
         eleCell.classList.add('cell');
         eleCell.innerHTML = i;
@@ -54,7 +56,7 @@ elePlayButton.addEventListener('click', function(){
 
             if (arrBombNumbers.includes(i)) {
                 //console.log('Yes');;
-                //eleCell.classList.add('test');
+                eleCell.classList.add('bomb');
 
                 // for (let j = arrBombNumbers.length - 1; j = 0; j--) {
                 //     //eleCell.classList.add('test');
