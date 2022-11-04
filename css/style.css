@@ -26,6 +26,7 @@ footer{
 }
 
 .container{
+    position: relative;
     display: flex;
     background-color: salmon;
     height: 100%;
@@ -58,6 +59,21 @@ footer{
     background-color: gold;
 }
 
+.cell.bomb.test{
+    background-color: red;
+}
+
+
 .hidden {
     display: none;
+}
+
+.banner {
+    background-color: blue;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    top: 0;
 }

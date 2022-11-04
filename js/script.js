@@ -7,9 +7,8 @@ La partita termina quando il giocatore clicca su una bomba o quando raggiunge il
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 */
 
-
 const elePlayButton = document.querySelector('#btn-play');
-const eleLevelSelect = document.querySelector('#level');
+const eleLevelSelect = document.querySelector('#level'); 
 const eleWelcome = document.querySelector('.welcome');
 const eleGrid = document.querySelector('.grid');
 
@@ -25,20 +24,39 @@ elePlayButton.addEventListener('click', function(){
     const sideSquare = Math.sqrt(nCell);
     eleGrid.style.setProperty('--sideSquare', sideSquare);
 
+    const arrBombNumbers = [1, 5, 10, 15, 20];
+
     for (let i = 1; i <= nCell; i++) {
         
         const eleCell = document.createElement('div');
         eleCell.classList.add('cell');
         eleCell.innerHTML = i;
         eleGrid.append(eleCell);
-    
-        eleCell.addEventListener('click',
-    
-            function () {
-    
-            this.classList.toggle('active');
-    
+
+
+
+        if (arrBombNumbers.includes(i)) {
+            eleCell.classList.add('bomb');
+        }
+
+        eleCell.addEventListener('click', function () {
+
+            const eleBanner = document.createElement('div');
+            eleBanner.classList.add('banner');
+            eleGrid.append(eleBanner);
+
+            if (arrBombNumbers.includes(i)) {
+                //console.log('Yes');;
+                eleCell.classList.add('test');
+
+                eleBanner.classList.add('show');
+            }
+
+            else {
+                this.classList.toggle('active');
+            }
         });
+
     }
 });
 
